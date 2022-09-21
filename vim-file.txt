@@ -1,3 +1,4 @@
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -7,21 +8,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 		        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 
 endif
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-" Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of plugins.
-Plug 'joshdick/onedark.vim'
-Plug 'haishanh/night-owl.vim'
 """"""""""""""""""""""""""""
-Plugin 'VundleVim/Vundle.vim'
 "all languages support
 Plug 'sheerun/vim-polyglot'
 """""""""""""""""""""""""""""
 Plug 'tomlion/vim-solidity'
-
+"""""""""""""""""""Java support
+Plug 'neoclide/coc-java'
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
@@ -29,33 +24,15 @@ Plug 'junegunn/seoul256.vim'
 Plug 'ghifarit53/tokyonight-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+"""""""""""""""""""""""""""""""""""adding typescript support 
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-" Vim Script
-"colorscheme tokyonight
-
-" Example config in VimScript
-"let g:lightline = {'colorscheme': 'tokyonight'}
-
-"let g:tokyonight_style = "night"
-"let g:tokyonight_italic_functions = 1
-"let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-
-"" Change the "hint" color to the "orange" color, and make the "error" color bright red
-"let g:tokyonight_colors = {
-"	  \ 'hint': 'orange',
-"  \ 'error': '#ff0000'
- " \ }
-
-" Load the colorscheme
-"colorscheme tokyonight
 """""""""""""""""""""""""""""""""""""""""
-""another attempt for tokyonight
-
-"""night owl settings 
 if (has("termguicolors"))
 	 set termguicolors
  endif
@@ -66,21 +43,28 @@ if (has("termguicolors"))
  """"" enable the theme
 
  syntax enable
-" colorscheme night-owl
 
  " To enable the lightline theme
- let g:lightline = { 'colorscheme': 'nightowl' }
+ let g:lightline = { 'colorscheme': 'tokyonight' }
 """""""""""""""""""""""""""""""""""""""""""""other configs
 let g:netrw_winsize = 30
 let g:newtrw_list_hide ='\(^\|\s\s)\zs\. \s\+'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
-let g:tokyonight_menu_selection_background:'green' "available green blue red
-
+"""""""""""""""""""""""""""""""""""""""""""tokyonight 
 let g:tokyonight_current_word = 'bold'
-let g:tokyonight_cursor:'auto'
 let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
-let g:tokyonight_transparent_background = 1
+let g:tokyonight_transparent_background = 1 
 colorscheme tokyonight
-set number
+set number relativenumber 
+""""""""some advanced vimscript
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+    " remap for complete to use tab and <cr>
+    inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+    inoremap <silent><expr> <c-space> coc#refresh()
