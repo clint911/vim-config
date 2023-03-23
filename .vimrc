@@ -15,7 +15,6 @@ Plug 'sheerun/vim-polyglot'
 """""""""""""""""""""""""""""
 Plug 'tomlion/vim-solidity'
 """""""""""""""""""Java support
-Plug 'neoclide/coc-java'
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
@@ -27,10 +26,10 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', '
 """""""""""""""""""""""""""""""""""adding typescript support 
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'https://github.com/itchyny/lightline.vim'
 " Install the vim-devicons plugin
 Plug 'ryanoasis/vim-devicons'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'junegunn/fzf.vim'
@@ -50,27 +49,22 @@ if (has("termguicolors"))
  """"" enable the theme
 
  syntax enable
- " To enable the lightline theme
- let g:airline#extensions#tabline#enabled = 'default' 
-let g:airline#extensions#tabline#enabled = 1 
- let g:airline = { 'colorscheme': 'tokyonight'}
 """""""""""""""""""""""""""""""""""""""""""""other configs
 let g:netrw_winsize = 30
 let g:newtrw_list_hide ='\(^\|\s\s)\zs\. \s\+'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
 """""""""""""""""""""""""""""""""""""""""""tokyonight 
-let g:tokyonight_current_word = 'bold'
-let g:tokyonight_style = 'storm' " available: night, storm
-let g:tokyonight_enable_italic = 1
-let g:tokyonight_transparent_background = 1 
-colorscheme tokyonight
 set number relativenumber 
 set virtualedit+=onemore
 
+" Use the vim-devicons plugin to display dev icons in the lightline
+colorscheme catppuccin_mocha 
+let g:airline_theme = 'catppuccin_mocha'
+"
 " Set the Lightline colorscheme to Tokyo Night
 let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
+      \ 'colorscheme': 'catppuccin_mocha',
       \ }
 let g:lightline.component_expand = {
       \ 'tabline': 'tabline_devicons',
@@ -80,10 +74,7 @@ let g:lightline.component_expand = {
       \ 'right': [ [ 'lineinfo' ],
       \ [ 'percent', 'fileformat', 'fileencoding', 'filetype' ] ]
       \ }
-
-""dev icons 
-" Use the vim-devicons plugin to display dev icons in the lightline
-
+"""""""""some advanced remaps 
 """"""""some advanced vimscript
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
     inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
@@ -94,11 +85,11 @@ let g:lightline.component_expand = {
         \ coc#refresh()
     inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
     inoremap <silent><expr> <c-space> coc#refresh()
-""""""""""some advanced remaps 
+""""""""""some advanced remaps
 let g:devicons_enable_finder = 1
 nmap <Space>w :w<CR>
 nmap <Space>wq :wq<CR>
-nmap <Space>pv :Ex<CR>
+nmap <Space>e :Ex<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <Space>ff <cmd>Telescope find_files<cr>
 nnoremap <Space>fg <cmd>Telescope live_grep<cr>
