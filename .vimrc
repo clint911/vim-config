@@ -23,7 +23,7 @@ Plug 'ghifarit53/atom-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
-"""""""""""""""""""""""""""""""""""adding typescript support 
+"""""""""""""""""""""""""""""""""""adding typescript support
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
 Plug 'https://github.com/itchyny/lightline.vim'
@@ -34,7 +34,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
+"add plugins here
 " or                                , { 'branch': '0.1.x' }
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -54,12 +54,12 @@ let g:netrw_winsize = 30
 let g:newtrw_list_hide ='\(^\|\s\s)\zs\. \s\+'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
-"""""""""""""""""""""""""""""""""""""""""""atom 
-set number relativenumber 
+set number relativenumber
 set virtualedit+=onemore
-
+set showmatch
+set cursorline
 " Use the vim-devicons plugin to display dev icons in the lightline
-colorscheme catppuccin_mocha 
+colorscheme catppuccin_mocha
 let g:airline_theme = 'catppuccin_mocha'
 "
 " Set the Lightline colorscheme to Atom
@@ -74,7 +74,7 @@ let g:lightline.component_expand = {
       \ 'right': [ [ 'lineinfo' ],
       \ [ 'percent', 'fileformat', 'fileencoding', 'filetype' ] ]
       \ }
-"""""""""some advanced remaps 
+"""""""""some advanced remaps
 """"""""some advanced vimscript
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
     inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
