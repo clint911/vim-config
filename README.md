@@ -2,10 +2,11 @@
 ````A few notes to personalizing this config ```
 
 i)To add a plugin, go to VimAwesome, look it up, say Java plugin & select the vim plug option since we are using vim plug as our plugin manager.
-ii)copy the plug text ie  Plug 'junegunn/fzf.vim' and paste it in the add plugins here section
+ii)copy the plug text ie  ```Plug 'junegunn/fzf.vim'``` and paste it in the add plugins here section
 iii) Save your changes to the file and type :%source command to refresh your changes, finally use the command :PlugInstall to install the plugin
 #Deleting a plugin:
 i) In your vimrc, navigate to the plugin section, and delete the entire plugin text ie ```Plug 'nvim-lua/plenary.nvim```
+ii) Type the %source command to refresh your changes after saving and then type ```PlugClean``` to delete the plugin, finally type y to the delete prompt and you have successfully deleted the plugin
 
 #Changing your colorscheme:
 My default colorscheme is catpuccin, but this should not stop you from installing your own favorite colorschemei) First, copy the "Plug text" after looking it up say in VimAwesome, make sure you select vim plug as your plugin manager
