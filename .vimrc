@@ -19,7 +19,7 @@ Plug 'tomlion/vim-solidity'
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
 """"""""""""""""""""""""""""""
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'ghifarit53/atom-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
@@ -54,7 +54,6 @@ let g:netrw_winsize = 30
 let g:newtrw_list_hide ='\(^\|\s\s)\zs\. \s\+'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
-"""""""""""""""""""""""""""""""""""""""""""tokyonight
 set number relativenumber
 set virtualedit+=onemore
 set showmatch
@@ -63,7 +62,7 @@ set cursorline
 colorscheme catppuccin_mocha
 let g:airline_theme = 'catppuccin_mocha'
 "
-" Set the Lightline colorscheme to Tokyo Night
+" Set the Lightline colorscheme to Atom
 let g:lightline = {
       \ 'colorscheme': 'catppuccin_mocha',
       \ }
